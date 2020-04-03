@@ -7,6 +7,18 @@
 ul.a {
   list-style-position: outside;
 }
+.joinB {
+  width: 70px;
+  height: 30px;
+  background-color: green;
+  color: white;
+  text-align:center;
+  line-height:30px;
+  border-radius: 30px;
+}
+.joinB:hover{
+     background: #383;
+}
 .tab-item.tab-active {
 
   display: block;
