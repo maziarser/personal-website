@@ -9,11 +9,11 @@ ul.a {
 }
 .joinB {
   width: 70px;
-  height: 30px;
+  height: 50px;
   background-color: green;
   color: white;
   text-align:center;
-  line-height:30px;
+  line-height:50px;
   border-radius: 30px;
 }
 .joinB:hover{
