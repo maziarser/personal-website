@@ -1,0 +1,374 @@
+[
+	{
+		"title": "The universal NAND-gate",
+		"description": "Let's start simple by investigating the behaviour of a NAND gate. Drag the NAND gate from the Components box on the left to the middle area, connect up the in- and outputs, and click Check.",
+		"gates": {
+			"NAND": 1
+		},
+		"inputs": [
+			"p",
+			"q"
+		],
+		"outputs": [
+			"r"
+		],
+		"goal": [
+			[
+				true,
+				true,
+				true,
+				false
+			]
+		],
+		"feedback": {
+			"correct": "As you can see, the output of the NAND goes low only if both inputs are high. Look at the bottom and top lines of the truth table where p = q. Note that when p = q = 1 the output is low and when p = q = 0 the output is high.",
+			"incorrect": "Not quite. Try connecting both p and q to the NAND gate."
+		}
+	},
+	{
+		"title": "On its head",
+		"description": "We can use the NAND gate to flip a single signal. Experiment with the interface to see if you can construct a circuit that flips the value of p.",
+		"gates": {
+			"NAND": 1
+		},
+		"inputs": [
+			"p"
+		],
+		"outputs": [
+			"r"
+		],
+		"goal": [
+			[
+				true,
+				false
+			]
+		],
+		"feedback": {
+			"correct": "Well done! You constructed what is known as an inverter or NOT gate. This fundamental gate implements the logical formula r = ¬p, and in circuit diagrams it looks like this:",
+			"show_gate": "NOT",
+			"incorrect": "Not quite. Did you know it is possible to connect the same input port to multiple gate inputs?"
+		}
+	},
+	{
+		"title": "Inverting everything",
+		"description": "Let's immediately put the NOT gate to use. We can use this gate to invert the values in the output column of a truth table. Just hook up the input and output and check the truth table.",
+		"gates": {
+			"NOT": 1
+		},
+		"inputs": [
+			"p"
+		],
+		"outputs": [
+			"r"
+		],
+		"goal": [
+			[
+				true,
+				false
+			]
+		],
+		"feedback": {
+			"correct": "You correctly connected the NOT gate. Without the NOT gate the output would have been r = p, but with a NOT gate, the output column is inverted. We can build an invertor using a NAND, or use the NOT gate (made up of NANDs) to do this.",
+			"incorrect": "What's happening? Surely there is only one way to connect things in this level?"
+		}
+	},
+	{
+		"title": "Invert the NAND",
+		"description": "The NAND goes low if both inputs are high. What if we want to do the inverse? Use the NAND gates given to ensure r is only high when both inputs are high.",
+		"gates": {
+			"NAND": 2
+		},
+		"inputs": [
+			"p",
+			"q"
+		],
+		"outputs": [
+			"r"
+		],
+		"goal": [
+			[
+				false,
+				false,
+				false,
+				true
+			]
+		],
+		"feedback": {
+			"correct": "Correct. This functionality is known as logic AND (r = p ∧ q). AND is also a fundamental gate; use it to detect if both inputs are high. It looks like this in a circuit diagram:",
+			"show_gate": "AND",
+			"incorrect": "Not quite. Do you remember how to build an inverter from a NAND gate?"
+		}
+	},
+	{
+		"title": "The chicken or the egg",
+		"description": "See if you can replicate the behaviour of the NAND using only the AND and NOT gate.",
+		"gates": {
+			"AND": 1,
+			"NOT": 1
+		},
+		"inputs": [
+			"p",
+			"q"
+		],
+		"outputs": [
+			"r"
+		],
+		"goal": [
+			[
+				true,
+				true,
+				true,
+				false
+			]
+		],
+		"feedback": {
+			"correct": "Correct. As you have discovered, NAND functionality is simply the NOT of AND: r = ¬(p ∧ q). But AND gates are built from NANDS. Arrrrrgh! All circuits can be built from NANDS, as you'll find out.",
+			"incorrect": "Not quite. You'll want to take the output of an AND gate, and then invert it."
+		}
+	},
+	{
+		"title": "Flipping the truth table",
+		"description": "Here's a handy trick: you can turn the output column of a truth table upside down by inverting each of the inputs. Let's try that out for a NAND gate.",
+		"gates": {
+			"NAND": 1,
+			"NOT": 2
+		},
+		"inputs": [
+			"p",
+			"q"
+		],
+		"outputs": [
+			"r"
+		],
+		"goal": [
+			[
+				false,
+				true,
+				true,
+				true
+			]
+		],
+		"feedback": {
+			"correct": "Correct. Compare the output column for a NAND (r = ¬(p ∧ q)) to that of a NAND with the inputs inverted (r = ¬(¬p ∧ ¬q) = p ∨ q) and you'll see the column values are upside down. You'll need this trick in the next level.",
+			"incorrect": "Not quite... did you try inverting each of the inputs?"
+		}
+	},
+	{
+		"title": "NOT and NAND",
+		"description": "Let's get one more fundamental gate in place. This gate's output should go high only if either or both of the inputs are high. You'll need to use all the NAND gates given.",
+		"gates": {
+			"NAND": 3
+		},
+		"inputs": [
+			"p",
+			"q"
+		],
+		"outputs": [
+			"r"
+		],
+		"goal": [
+			[
+				false,
+				true,
+				true,
+				true
+			]
+		],
+		"feedback": {
+			"correct": "Correct. This functionality, r = p ∨ q, is known as an OR gate. You now have all the fundamental gates needed for this game: AND, OR, and NOT! An OR gate looks like this:",
+			"show_gate": "OR",
+			"incorrect": "Not quite. The behavior we want can be created by flipping the NAND gate truth table output column upside down. Do you remember from the previous level how to do this?"
+		}
+	},
+	{
+		"title": "1 + 1 = 0?",
+		"description": "Let's put the fundamental gates to use to add two binary digits together. Just like in decimal 9 + 1 gives 0 (carry 1), in binary 1 + 1 gives 0 (carry 1). Let's do the carry first: Build a circuit to check if both inputs are a 1.\n\nTip: You don't need to use all the gates from the Components panel. Use the best gate for the job!",
+		"gates": {
+			"AND": 1,
+			"NAND": 2,
+			"OR": 2
+		},
+		"inputs": [
+			"p",
+			"q"
+		],
+		"outputs": [
+			"c"
+		],
+		"goal": [
+			[
+				false,
+				false,
+				false,
+				true
+			]
+		],
+		"feedback": {
+			"correct": "Easy. But to check if the sum of p + q is 1 we need to know if either, but not both inputs is high. This needs a side adventure...",
+			"incorrect": "Not quite. Can you remember which of the fundamental gates can be used to check if both inputs are high?"
+		}
+	},
+	{
+		"title": "Are they the same?",
+		"description": "Now let's build a similarity checker so the output goes high if both the inputs are the same. There are two input combinations where this happens, so you need a circuit that checks if one combination or the other is active.",
+		"gates": {
+			"NOT": 2,
+			"AND": 2,
+			"OR": 1
+		},
+		"inputs": [
+			"p",
+			"q"
+		],
+		"outputs": [
+			"r"
+		],
+		"goal": [
+			[
+				true,
+				false,
+				false,
+				true
+			]
+		],
+		"feedback": {
+			"correct": "Tricky huh?! This functionality is known as XNOR. Its output goes high if p ∧ q or ¬p ∧ ¬q. It is drawn as follows:",
+			"show_gate": "XNOR",
+			"incorrect": "Not quite. Remember, the AND gate checks if both inputs are the same. How can you flip the behavior of the AND truth table upside down? What was the technique used to build the OR gate?"
+		}
+	},
+	{
+		"title": "Are they different?",
+		"description": "Thinking back to adding two binary values, we need to detect if either input is high, but not both. There are 2 circuits that can do this. Let's build the easy one:",
+		"gates": {
+			"XNOR": 1,
+			"NOT": 1
+		},
+		"inputs": [
+			"p",
+			"q"
+		],
+		"outputs": [
+			"r"
+		],
+		"goal": [
+			[
+				false,
+				true,
+				true,
+				false
+			]
+		],
+		"feedback": {
+			"correct": "Correct. This functionality is known as logic XOR. It goes high p and q are different (that is, if p ∧ ¬q or ¬p ∧ q). How many NAND gates do you think are needed to build the XOR gate?",
+			"show_gate": "XOR",
+			"incorrect": "Not quite. If the XNOR tells us when input signals are the same, then the XOR needs to be the inverse of this behavior. How do you invert an output column?"
+		}
+	},
+	{
+		"title": "Are they (efficiently) different?",
+		"description": "Inverting an XNOR takes a lot of NAND gates. So let's see if you can build a circuit to implement XOR behavior using just and AND gate, an OR gate, and two NOT gates.",
+		"gates": {
+			"AND": 1,
+			"NOT": 2,
+			"OR": 1
+		},
+		"inputs": [
+			"p",
+			"q"
+		],
+		"outputs": [
+			"r"
+		],
+		"goal": [
+			[
+				false,
+				true,
+				true,
+				false
+			]
+		],
+		"feedback": {
+			"correct": "Correct! We can say the XOR behavior is r = (¬p ∨ q) ∧ (p ∨ ¬q). In the next level, we'll use this gate into our adding circuit.",
+			"incorrect": "Not quite. (TO DO MISSING HINT FOR THIS LEVEL)"
+		}
+	},
+	{
+		"title": "Back to simnple maths",
+		"description": "Now we finally get back to the task of adding two bits a and b. You have two outputs to generate; the sum and the carry of a + b. Hopefully you remember the gate to set the sum, and why we took the XOR detour!",
+		"gates": {
+			"AND": 1,
+			"XOR": 1
+		},
+		"inputs": [
+			"a",
+			"b"
+		],
+		"outputs": [
+			"sum",
+			"carry"
+		],
+		"goal": [
+			[
+				false,
+				true,
+				true,
+				false
+			],
+			[
+				false,
+				false,
+				false,
+				true
+			]
+		],
+		"feedback": {
+			"correct": "Correct! We can now add 2 bits. This is known as a half adder. But performing 1 + 1 isn't that useful... we need to handle bigger numbers.",
+			"incorrect": "Not quite. You can compute the sum and carry separately; both need a single gate."
+		}
+	},
+	{
+		"title": "More bits please!",
+		"description": "When we're computing 13 + 18 in decimal, we typically start on the right by adding the values in a column and carrying to the column on the left. So each column actually has three inputs: a bit from the first number, a bit from the second number, and an incoming carry. Let's build a circuit that has the same behavior as the half adder, but also sets carry = sum = 1 if all three inputs are active.",
+		"gates": {
+			"AND": 2,
+			"XOR": 2,
+			"OR": 1
+		},
+		"inputs": [
+			"a",
+			"b",
+			"c"
+		],
+		"outputs": [
+			"sum",
+			"carry"
+		],
+		"goal": [
+			[
+				false,
+				true,
+				true,
+				false,
+				true,
+				false,
+				false,
+				true
+			],
+			[
+				false,
+				false,
+				false,
+				true,
+				false,
+				true,
+				true,
+				true
+			]
+		],
+		"feedback": {
+			"correct": "Bang tidy! We now have a circuit that has the ability to add a single binary column. Let's put it to use!",
+			"incorrect": "Not quite. Try adding a + b first using a half adder, and then use another half adder to add the result to c."
+		}
+	}
+]
